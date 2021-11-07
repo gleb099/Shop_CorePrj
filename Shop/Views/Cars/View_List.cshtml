@@ -1,37 +1,47 @@
 ﻿@{
+    int i = 0;
+    Dictionary<string, string> carouselDict = new Dictionary<string, string>();
+    foreach (var car in Model.allCars)
+    {
+        if (i == 3) break;
+        carouselDict.Add($"{i.ToString()}img", $"{car.img}");
+        carouselDict.Add($"{i.ToString()}name", $"{car.name}");
+        carouselDict.Add($"{i.ToString()}shortDesc", $"{car.shortDesc}");
+        i++;
+    }
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img src="@Model.allCars[0].img" class="d-block w-100" alt="...">
+                <img src="@carouselDict["0img"]" class="d-block w-100" alt="...">
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1>@Model.allCars[0].name</h1>
-                        <p>@Model.allCars[0].shortDesc</p>
+                        <h1>@carouselDict["0name"]</h1>
+                        <p>@carouselDict["0shortDesc"]</p>
                         <p><a class="btn btn-lg btn-primary" href="#">More details</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item active">
-                <img src="@Model.allCars[1].img" class="d-block w-100" alt="...">
+                <img src="@carouselDict["1img"]" class="d-block w-100" alt="...">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>@Model.allCars[1].name</h1>
-                        <p>@Model.allCars[1].shortDesc</p>
+                        <h1>@carouselDict["1name"]</h1>
+                        <p>@carouselDict["1shortDesc"]</p>
                         <p><a class="btn btn-lg btn-primary" href="#">More details</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="@Model.allCars[2].img" class="d-block w-100" alt="...">
+                <img src="@carouselDict["2img"]" class="d-block w-100" alt="...">
                 <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>@Model.allCars[2].name</h1>
-                        <p>@Model.allCars[2].shortDesc</p>
+                        <h1>@carouselDict["2name"]</h1>
+                        <p>@carouselDict["2shortDesc"]</p>
                         <p><a class="btn btn-lg btn-primary" href="#">More details</a></p>
                     </div>
                 </div>
